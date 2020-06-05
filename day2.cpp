@@ -41,3 +41,30 @@ int main() {
 	
 	return 0;
 }
+
+
+TASK 1 
+	class Solution {
+public:
+    int countNegatives(vector<vector<int>>& grid) {
+        int m =grid.size()-1  ;
+        int n =grid[1].size()-1 ;
+        int count=0;
+       
+       for(int j=0;j<=n ; j++)
+       {  if(grid[m][n-j]>=0 )
+           continue ;
+        
+       else { int i=0 ;
+          while(i<=m && grid[m-i][n-j]<0)
+          {  
+              count++ ; 
+              i++;
+          }
+       }
+
+       }
+        return count ;
+              
+    }
+};
