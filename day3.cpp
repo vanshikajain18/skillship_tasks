@@ -66,3 +66,28 @@ int main() {
 
 return 0;
 }
+
+
+TASK 3 
+	
+	class Solution {
+public:
+    vector<vector<int>> transpose(vector<vector<int>>& A) {
+        
+        vector<vector<int>> v ;
+        int m=A.size();
+        int n= A[0].size() ;
+        v.resize(n) ;
+        
+        for(int i=0;i<n ;i++)
+        {  
+            for(int j=0;j<m;j++)
+            {  int k=A[j][i] ;
+               v[i].push_back(k) ;
+            }
+        }
+        return v ;
+        
+        
+    }
+};
