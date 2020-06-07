@@ -44,26 +44,28 @@ int main() {
 
 
 TASK 1 
-	class Solution {
+
+class Solution {
 public:
     int countNegatives(vector<vector<int>>& grid) {
-        int m =grid.size()-1  ;
-        int n =grid[1].size()-1 ;
+       int m =grid.size()  ;
+        int n =grid[0].size() ;
         int count=0;
-       
-       for(int j=0;j<=n ; j++)
-       {  if(grid[m][n-j]>=0 )
-           continue ;
-        
-       else { int i=0 ;
-          while(i<=m && grid[m-i][n-j]<0)
-          {  
-              count++ ; 
-              i++;
-          }
-       }
-
-       }
+        int i=m-1 ;
+        for(int j=0;j<n;j++)
+        {
+            while(i>=0)
+            {
+                if (grid[i][j]<0)
+                {count = count+n-j ;
+                 i-- ;}
+                
+                else break ;
+                
+            }
+        }
+ 
+    
         return count ;
               
     }
