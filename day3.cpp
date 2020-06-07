@@ -94,6 +94,40 @@ public:
     }
 };
 
+
+TASK 4 
+	
+	class Solution {
+public:
+    int findLucky(vector<int>& arr)
+    {
+        int n=arr.size() ;
+        
+        int freq[n+1] ;
+        
+        for(int i=0;i<n+1;i++)
+        { freq[i]=0 ;}
+        
+        for(int i=0;i<n;i++)
+        { 
+        if(arr[i]>n)
+            continue ;
+        
+         else freq[arr[i]]++ ;      
+        }
+        
+        int j=-1 ;
+        for(int i=1;i<n+1;i++)
+        {
+            if(i==freq[i] && i>j)
+            { j=i ; }       
+        }
+         
+         return j ;
+    }
+};
+
+
 Task 5
 	
 	class Solution {
@@ -136,3 +170,4 @@ public:
         return true ;
     }
 };
+
