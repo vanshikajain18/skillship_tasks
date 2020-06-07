@@ -29,6 +29,8 @@ while(t--)
 
 
 
+
+
 TASK 2 
 	
 	#include <iostream>
@@ -89,5 +91,48 @@ public:
         return v ;
         
         
+    }
+};
+
+Task 4 
+	
+	class Solution {
+public:
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) 
+    {
+        int m=matrix.size() ;
+        int n=matrix[0].size() ;
+        
+        int i=0,j=0 ;
+        
+        for(j=0;j<n-1;j++)
+        { int p=i+1,q=j+1 ;
+        while (p<m && q<n )
+        { 
+            if(matrix[i][j] !=matrix[p][q])
+                return false ;
+            
+            else 
+            {   p++ ;
+                q++ ;
+            }
+        }
+        }
+        
+        j=0 ;
+        for(i=1;i<m-1;i++)
+        { int p=i+1,q=j+1 ;
+        while (p<m && q<n )
+        { 
+            if(matrix[i][j] !=matrix[p][q])
+                return false ;
+            
+            else 
+            {   p++ ;
+                q++ ;
+            }
+        }
+        }
+        return true ;
     }
 };
