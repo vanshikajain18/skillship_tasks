@@ -57,9 +57,9 @@ int main() {
 	    if(head==NULL)
 	    return 0 ;
 
-	    node* h1=NULL ;  \\to track the first odd no.
-	    node* odd=NULL ;   \\ to connect all odd nos.
-	    node* even=NULL ;   \\ to connect all even nos.
+	    node* h1=NULL ;  //to track the first odd no.
+	    node* odd=NULL ;   // to connect all odd nos.
+	    node* even=NULL ;   //to connect all even nos.
 	    node* cur= head;
 	    int cnt=0 ;
 
