@@ -257,5 +257,95 @@ public:
 };
 
 
+TASK 6 
+    ADD TWO NUMBERS 
+    
+    class node
+{
+public:
+int val ;
+node* next ;
 
+node(int x)
+{
+  val=x ; next=NULL ;
+}
+};
+
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        
+        string s;
+       
+          node* cur=NULL ;
+        node* head1 =NULL;
+        node* tail1=NULL ;
+    for(int i=0 ; i<num1.length() ;i++)
+     { 
+        
+        if(head1==NULL)
+        {cur=new node(num1[0]) ;
+         head1=cur;
+         tail1=cur ;
+        }
+        
+        else 
+        {
+            cur=new node(num1[i]) ;
+            tail1->next=cur ;
+            tail1=cur ;
+        }
+     } 
+        cur=NULL ;
+        node* head2 =NULL;
+        node* tail2=NULL ;
+         for(int i=0 ; i<num2.length() ;i++)
+     {  
+        
+        if(head2==NULL)
+        {cur=new node(num2[0]) ;
+         head2=cur;
+         tail2=cur ;
+        }
+        
+        else 
+        {
+            cur=new node(num2[i]) ;
+            tail2->next=cur ;
+            tail2=cur ;
+        }
+     } 
+        cout<<head1->val<<" "<<tail2->val ;
+     int sum=0 ,carry=0,i=0 ;
+        node* head=NULL ;
+         cur=NULL ;
+
+         
+        while(head1!=NULL || head2!=NULL ||sum>0   )
+        {   
+            if(head1==NULL && head2!=NULL)
+                sum=head2->val+carry ;
+                
+           if(head2==NULL && head1!=NULL)
+               sum=head1->val+carry ;
+            
+           else if(head1!=NULL && head2!=NULL) 
+               sum = head1->val + head2->val +carry ;
+            
+            
+          s[i]=sum%10 ;
+            i++ ;
+            sum=sum/10 ;
+            carry=sum%10 ;
+            if(head1!=NULL) head1=head1->next ;
+            if(head2!=NULL) head2=head2->next ;
+            
+        }
+        
+    
+    return s ;
+        
+    }
+};
     
