@@ -45,3 +45,70 @@ public:
     }
 };
 
+
+TASK 2 
+   ROTATE LIST 
+   
+   class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        
+        if (head==NULL)
+            return head ;
+        
+        ListNode* tail =head ;
+        int n =1 ;
+        
+        while(tail->next!=NULL)
+        {
+           n++ ;
+            tail=tail->next ;
+            
+        }
+        tail->next= head ;
+        
+        for(int i=k;i>=0;i--)
+        {  
+            tail=tail->next ;
+            head=head->next;
+        }
+        tail->next=NULL ;
+        return head ;
+    }
+};
+
+TASK 3
+    DESIGN LINKED LIST 
+    
+   
+TASK 4 
+    COUNT AND SAY 
+    
+    class Solution {
+public:
+    string countAndSay(int n) {
+        
+        string s ;
+        if (n == 1)
+            return "1";
+        
+        
+        int count=0;
+        string str ;
+        s = countAndSay(n - 1);
+        
+        for (int i = 0; i <s.length(); i++)
+        {   
+            count++;
+            while (s[i] == s[i + 1] && i+1!=s.length() )
+            {
+                i++;
+                count++;
+            }
+            
+            str= str + to_string(count) + s[i];
+            count=0;
+        }
+        return str;
+    }
+};
