@@ -77,11 +77,154 @@ public:
     }
 };
 
+
 TASK 3
     DESIGN LINKED LIST 
+ class node
+{public:
+  int val ;
+ node* next ;
+ node() {
+     next=NULL ;
+ }
+ node(int data)
+ {
+     val=data ;
+     next=NULL ;
+ }
+ 
+};
+
+class MyLinkedList {
+public:
+    node* head ;
+    node* tail ;
+
+     MyLinkedList() {
+      head=tail=NULL ;
+    }
+    
+    
+    int get(int index) {
+        
+        if(head==NULL)
+            return -1 ;
+        node* cur =head ;
+    
+        for(int i=0;i<index;i++)
+        {
+            cur=cur->next ;
+        }
+        
+      if(cur!=NULL) return cur->val ;
+      else return -1 ;     
+    }
+    
+    void addAtHead(int val) {
+       node* cur=new node(val) ;
+        cur->next=head;
+        head=cur ;
+    }
+    
+    void addAtTail(int val) {
+        if(head==NULL)
+            return ;
+        
+         node* cur=new node(val) ;
+    if(tail!=NULL)    tail->next=cur;
+    }
     
    
-TASK 4 
+    void addAtIndex(int index, int val) {
+        
+        if(head==NULL)
+        {
+            if (index==0)
+                head=new node(val) ;
+        }
+            
+       else
+       {node* cur=head;
+        int k=0 ;
+        while(k!=index-1  && cur!=NULL)
+        {
+            cur=cur->next;
+            k++;
+        }
+        if(cur!=NULL)
+        {node* root=new node(val);
+        root->next=cur->next ;
+        cur->next=root ;}
+       }
+    }
+    
+    void deleteAtIndex(int index) {
+        if(head==NULL)
+       return ;
+            
+       else
+       {node* cur=head;
+        node* prev= NULL ;
+        int k=0 ;
+        while(cur!=NULL)
+        {
+
+        if(k==index-1 )
+        { if(prev!=NULL) prev->next=cur->next;
+         delete cur ;
+        }
+            cur=cur->next;
+          if(prev!=NULL)  prev=prev->next;
+            k++;
+       }
+    }
+    }  
+};
+ 
+ 
+ TASK 4 
+    REVERSE NODES IN K-GROUP 
+    class Solution {
+public:
+    bool has_n_elements(ListNode* head, int n) {
+        ListNode* curr = head;
+        for (int count = 0; count < n; ++count) {
+            if (curr == nullptr) return false;
+            curr = curr->next;
+        }
+        return true;
+    }
+    
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if (head == nullptr) return head;
+        
+        ListNode* pre_reversed = new ListNode(-10, head);
+        ListNode* dummy = pre_reversed;
+        ListNode* curr = head;
+        do {
+            ListNode* first = curr;
+            ListNode* prev = curr;
+            curr = curr->next;
+            for (int reversed_edges = 1; reversed_edges < k; ++reversed_edges) {
+                ListNode* next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
+            }
+            first->next = curr; 
+            pre_reversed->next = prev;
+            pre_reversed = first; 
+            
+        } while (has_n_elements(curr, k));
+        
+        head = dummy->next;
+        delete dummy;
+        return head;
+    }
+};
+    
+   
+TASK 5
     COUNT AND SAY 
     
     class Solution {
@@ -112,3 +255,7 @@ public:
         return str;
     }
 };
+
+
+
+    
