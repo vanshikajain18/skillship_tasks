@@ -260,7 +260,7 @@ public:
 TASK 6 
     ADD TWO NUMBERS 
     
-    class node
+class node
 {
 public:
 int val ;
@@ -278,21 +278,20 @@ public:
         
         string s;
        
-          node* cur=NULL ;
+          node* cur ;
         node* head1 =NULL;
         node* tail1=NULL ;
-    for(int i=0 ; i<num1.length() ;i++)
+    for(int i=num1.length()-1;i>=0 ;i--)
      { 
         
         if(head1==NULL)
-        {cur=new node(num1[0]) ;
+        {cur=new node(num1[i]-'0') ;
          head1=cur;
          tail1=cur ;
-        }
-        
+         }
         else 
         {
-            cur=new node(num1[i]) ;
+            cur=new node(num1[i]-'0') ;
             tail1->next=cur ;
             tail1=cur ;
         }
@@ -300,23 +299,23 @@ public:
         cur=NULL ;
         node* head2 =NULL;
         node* tail2=NULL ;
-         for(int i=0 ; i<num2.length() ;i++)
+         for(int i=num2.length()-1; i>=0 ;i--)
      {  
         
         if(head2==NULL)
-        {cur=new node(num2[0]) ;
+        {cur=new node(num2[i]-'0') ;
          head2=cur;
          tail2=cur ;
         }
         
         else 
         {
-            cur=new node(num2[i]) ;
+            cur=new node(num2[i]-'0') ;
             tail2->next=cur ;
             tail2=cur ;
         }
      } 
-        cout<<head1->val<<" "<<tail2->val ;
+       
      int sum=0 ,carry=0,i=0 ;
         node* head=NULL ;
          cur=NULL ;
@@ -333,19 +332,19 @@ public:
            else if(head1!=NULL && head2!=NULL) 
                sum = head1->val + head2->val +carry ;
             
-            
-          s[i]=sum%10 ;
+            int x=sum%10 ;
+          s= s+ to_string(x) ;
             i++ ;
             sum=sum/10 ;
             carry=sum%10 ;
             if(head1!=NULL) head1=head1->next ;
             if(head2!=NULL) head2=head2->next ;
             
+            
         }
         
-    
+    reverse(s.begin(), s.end());
     return s ;
         
     }
 };
-    
