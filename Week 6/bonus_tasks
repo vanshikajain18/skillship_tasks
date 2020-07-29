@@ -1,0 +1,53 @@
+TASK 2 
+INTERSECTION OF INTERVALS
+Given two lists of closed intervals, each list of intervals is pairwise disjoint and in sorted order.
+Return the intersection of these two interval lists.
+
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& a, vector<vector<int>>& b) {
+        
+        int i,l1=0,l2 = 0,n1 = a.size(),n2 = b.size();
+        
+        vector<vector<int>> ans;
+        
+        while(l1<n1 && l2<n2){
+            int x1,y1,x2,y2;
+            x1 = a[l1][0]; y1 = a[l1][1]; x2 = b[l2][0]; y2 = b[l2][1];
+            if(y1<x2)
+                l1++;
+            else if(y2<x1)
+                l2++;
+            else if(y1==y2){
+                ans.push_back({max(x1,x2),y1});
+                l2++;
+                l1++;
+            }
+            else if(y1<y2 && y1>=x2){
+                l1++;
+                ans.push_back({max(x1,x2),y1});
+            }
+            else if(y2<y1 && y2>=x1){
+                l2++;
+                ans.push_back({max(x1,x2),y2});
+            }
+        }
+        return ans;
+    }
+};
+
+
+
+TASK 5 
+TARGET ARRAY
+
+class Solution {
+public:
+    vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {
+        vector<int> v;
+        for(int i=0;i<nums.size();i++){
+            v.insert(v.begin()+index[i],nums[i]);
+        }
+        return v;
+    }
+};
